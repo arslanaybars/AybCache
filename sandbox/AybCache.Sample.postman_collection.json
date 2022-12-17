@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "f5f66d55-8d81-4be7-9665-20a9f097cb79",
+		"name": "AybCache.Sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14502181"
+	},
+	"item": [
+		{
+			"name": "HttpClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/HttpClient/Aybars",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"HttpClient",
+						"Aybars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Repository",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/Repository",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"Repository"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RepositoryFilter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/Repository/Filter?brand=Apple",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"Repository",
+						"Filter"
+					],
+					"query": [
+						{
+							"key": "brand",
+							"value": "Apple"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mediator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44329/Repository",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44329",
+					"path": [
+						"Repository"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

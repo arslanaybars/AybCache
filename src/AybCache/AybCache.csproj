@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <LangVersion>latest</LangVersion>
+        <Version>1.0.0</Version>
+        <Authors>Aybars Arslan</Authors>
+        <Description>Caching with aspect orriented approach</Description>
+        <PackageTags>aspect orriented caching, aop, cache, cross-cutting concern, castle cache</PackageTags>
+        <PackageReleaseNotes>Init.</PackageReleaseNotes>
+        <NeutralLanguage>en</NeutralLanguage>
+        <RepositoryUrl>https://github.com/arslanaybars/AybCache</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/arslanaybars/AybCache</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Core" Version="5.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
