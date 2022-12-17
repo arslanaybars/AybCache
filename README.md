@@ -23,7 +23,15 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer
 ```
 3. Add proxied services with using ``AddProxiedScoped()``
 ```csharp
-builder.Services.AddProxiedScoped<IProductRepository, ProductRepository>();
+// Repository example
+builder.Services.AddProxiedScoped<IProductRepository, ProductRepository>();  
+  
+// HttpClient example  
+builder.Services.AddProxiedScoped<IAgifyHttpClient, AgifyHttpClient>();  
+
+// Mediator example  
+builder.Services.AddProxiedScoped<IRequestHandler<GetNameQuery, string>, GetNameQueryHandler>();
+
 ```
 4. Add the ``[AybCache]`` attribute which method you want to cache.
 ```csharp
