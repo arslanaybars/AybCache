@@ -10,10 +10,6 @@ jobs:
 
   build:
 
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-
     runs-on: ubuntu-latest                           
 
     env:
@@ -40,4 +36,4 @@ jobs:
       run: nuget restore $SOLUTION
       
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build $SOLUTION --configuration $Build_Config --no-restore
