@@ -14,7 +14,7 @@ jobs:
 
     env:
       Build_Config: Release
-      Solution_Name: AybCache.sln
+      Solution: AybCache.sln
       Test_Project_Path: AybCache.Tests\AybCache.Tests.csproj
 
     steps:
@@ -30,7 +30,7 @@ jobs:
         dotnet-version: 7.0.x
       
     - name: Restore dependencies
-      run: nuget restore $SOLUTION
+      run: nuget restore $Solution
       
     - name: Build
-      run: dotnet build $SOLUTION --configuration $Build_Config --no-restore
+      run: dotnet build $Solution --configuration $Build_Config --no-restore
