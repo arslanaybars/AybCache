@@ -1,10 +1,24 @@
 # AybCache
 
+![Nuget](https://img.shields.io/nuget/v/aybcache)
+![Nuget](https://img.shields.io/nuget/dt/AybCache)
+
+[![AybCache.CI](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-ci.yml/badge.svg)](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-ci.yml)
+[![AybCache.Nuget](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-nuget.yml/badge.svg)](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-nuget.yml)
+
+
 This library helps you to cache your services responses with aspect-oriented approach 
 
 # How to use AybCache
 
-1. Add ``IDistributedCache`` to your IoC
+Let's see how easy to use **AybCache**
+
+1. Install `AybCache` NuGet package from [here](https://www.nuget.org/packages/Fop/).
+ ````
+PM> dotnet add package AybCache
+````
+
+2. Add ``IDistributedCache`` to your IoC
 
 Here is simple example of injecting ``IDistributedCache`` as *Redis*
 ```csharp
@@ -17,11 +31,11 @@ builder.Services.AddDistributedRedisCache(options =>
 builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(redisConnectionString));
 ```
 
-2. Add **services.AddAybCache()** in program.cs
+3. Add **services.AddAybCache()** in program.cs
 ```csharp
-    builder.Services.AddAybCache();
+builder.Services.AddAybCache();
 ```
-3. Add proxied services with using ``AddProxiedScoped()``
+4. Add proxied services with using ``AddProxiedScoped()``
 ```csharp
 // Repository example
 builder.Services.AddProxiedScoped<IProductRepository, ProductRepository>();  
@@ -31,9 +45,8 @@ builder.Services.AddProxiedScoped<IAgifyHttpClient, AgifyHttpClient>();
 
 // Mediator example  
 builder.Services.AddProxiedScoped<IRequestHandler<GetNameQuery, string>, GetNameQueryHandler>();
-
 ```
-4. Add the ``[AybCache]`` attribute which method you want to cache.
+5. Add the ``[AybCache]`` attribute which method you want to cache.
 ```csharp
 [AybCache(Seconds = 600, CacheKey = CacheKeys.Repository.Products)]  
 public async Task<List<Product>> GetProducts()  
