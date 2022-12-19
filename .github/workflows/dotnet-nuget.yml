@@ -44,9 +44,6 @@ jobs:
     - name: Build
       run: dotnet build $Solution --configuration $Build_Config --no-restore
       
-    - name: Run tests
-      run: dotnet test /p:Configuration=$env:Build_Config --no-restore --no-build --verbosity normal
-      
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')
       run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
