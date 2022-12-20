@@ -6,14 +6,13 @@
 [![AybCache.CI](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-ci.yml/badge.svg)](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-ci.yml)
 [![AybCache.Nuget](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-nuget.yml/badge.svg)](https://github.com/arslanaybars/AybCache/actions/workflows/dotnet-nuget.yml)
 
-
 This library helps you to cache your services responses with aspect-oriented approach 
 
 # How to use AybCache
 
 Let's see how easy to use **AybCache**
 
-1. Install `AybCache` NuGet package from [here](https://www.nuget.org/packages/Fop/).
+1. Install `AybCache` NuGet package from [here](https://www.nuget.org/packages/AybCache/).
  ````
 PM> dotnet add package AybCache
 ````
@@ -62,6 +61,16 @@ public async Task<List<Product>> GetProductsByBrand(string brand)
     return await Task.Run(() => Task.FromResult(_products.Where(x => x.Brand == brand).ToList()));  
 }
 ```
+
+### Idea
+You can see the difference and main idea while checking the attached images so you can easily cache your repository, mediator handler or httpclient responses
+
+#### Before
+![image](https://raw.githubusercontent.com/arslanaybars/AybCache/main/images/before.png)
+
+#### After
+![image](https://raw.githubusercontent.com/arslanaybars/AybCache/main/images/after.png)
+
 ### Sample
 To further understand the library, please review the Sample API project.
 
