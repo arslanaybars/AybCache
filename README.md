@@ -13,7 +13,7 @@ This library helps you to cache your services responses with aspect-oriented app
 
 Let's see how easy to use **AybCache**
 
-1. Install `AybCache` NuGet package from [here](https://www.nuget.org/packages/Fop/).
+1. Install `AybCache` NuGet package from [here](https://www.nuget.org/packages/AybCache).
  ````
 PM> dotnet add package AybCache
 ````
