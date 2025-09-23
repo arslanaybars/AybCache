@@ -1,4 +1,4 @@
-﻿namespace AybCache;
+namespace AybCache;
 
 public static class CacheKeyGenerator
 {
@@ -6,33 +6,48 @@ public static class CacheKeyGenerator
     {
         try
         {
-            if (!arguments.Any())
+            if (IsArgumentsEmpty(arguments))
             {
                 return cacheKey;
             }
+
+            var firstArgument = arguments[0];
             
-            if (arguments[0] is string str)
+            return firstArgument switch
             {
-                return string.Format(cacheKey, str.ToLower());
-            }
-
-            if (arguments[0] is List<string> stringArguments)
-            {
-                return string.Format(cacheKey,
-                    string.Join(",", stringArguments.Select(x => x.ToLower()).OrderBy(q => q)));
-            }
-
-            if (arguments[0] is ICacheKeyHolder cacheKeyHolder)
-            {
-                return string.Format(cacheKey, cacheKeyHolder.CacheKey);
-            }
-
+                string str => FormatCacheKeyWithString(cacheKey, str),
+                List<string> stringList => FormatCacheKeyWithStringList(cacheKey, stringList),
+                ICacheKeyHolder cacheKeyHolder => FormatCacheKeyWithCacheKeyHolder(cacheKey, cacheKeyHolder),
+                _ => null
+            };
         }
         catch
         {
             // ignored
+            return null;
         }
+    }
 
-        return null;
+    private static bool IsArgumentsEmpty(object[] arguments)
+    {
+        return !arguments.Any();
+    }
+
+    private static string FormatCacheKeyWithString(string cacheKey, string str)
+    {
+        return string.Format(cacheKey, str.ToLower());
+    }
+
+    private static string FormatCacheKeyWithStringList(string cacheKey, List<string> stringList)
+    {
+        var sortedLowerCaseValues = string.Join(",", 
+            stringList.Select(x => x.ToLower()).OrderBy(q => q));
+        
+        return string.Format(cacheKey, sortedLowerCaseValues);
+    }
+
+    private static string FormatCacheKeyWithCacheKeyHolder(string cacheKey, ICacheKeyHolder cacheKeyHolder)
+    {
+        return string.Format(cacheKey, cacheKeyHolder.CacheKey);
     }
 }
